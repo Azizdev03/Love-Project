@@ -1,0 +1,111 @@
+:root {
+  --bg-main: radial-gradient(circle at top, #2b004f, #000);
+  --heart-color: #ff4d6d;
+  --glow: 0 0 20px rgba(255, 77, 109, 0.8);
+  --text-gradient: linear-gradient(45deg, #ff4d6d, #ff8fa3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: var(--bg-main);
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* personnages */
+.character {
+  position: absolute;
+  bottom: 40px;
+  font-size: 3rem;
+}
+
+.left { left: 40px; }
+.right { right: 40px; }
+
+/* texte central */
+.love-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.2rem;
+  font-weight: bold;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  text-shadow: var(--glow);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+}
+
+/* message secret */
+.secret {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.secret.show {
+  opacity: 1;
+}
+
+/* coeurs */
+.heart {
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--heart-color);
+  animation: fly 2s linear forwards;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* signature */
+.signature {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .love-text {
+    font-size: 2.2rem;
+  }
+  .character {
+    font-size: 2.2rem;
+  }
+}
